@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GhostTap - Research Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="dot"></span>
+      <div>
+        <div class="brand-title">GhostTap Research</div>
+  <div class="brand-sub">Android tapjacking & related GhostTap attack scenarios</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#overview">Overview</a>
+      <a href="#family">GhostTap</a>
+      <a href="#videos">Videos</a>
+      <a href="#paper">Paper</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="overview">
+      <div class="hero-body">
+  <p class="eyebrow">Mobile Security</p>
+  <h1>GhostTap</h1>
+  <p class="lede">We introduce a novel class of tapjacking attacks that undermine user trust by creating phantom windows—malicious overlays that intercept user input while evading Android's security mechanisms. This site presents our research, key findings, and live demonstrations.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#videos">Watch demos</a>
+          <a class="btn ghost" href="#paper">Read the paper</a>
+        </div>
+        <div class="meta-grid">
+          <div class="meta-card">
+            <div class="meta-label">Attack Scenarios</div>
+            <div class="meta-value">GhostIPC / GhostWindow / GhostARIS / GhostTrust</div>
+            <p class="meta-note">These four scenarios correspond to three reported CVEs.</p>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Vulnerabilities</div>
+            <div class="meta-value">Google-Confirmed High-Severity Zero-Days</div>
+            <p class="meta-note">Google validated 3 high-severity zero-days (CVE-2025-48XX0, CVE-2025-48XX7, and one pending) that exploit state inconsistencies to bypass all defenses.</p>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Impact</div>
+            <div class="meta-value">Tap hijacking / Overlay abuse / Privilege escalation</div>
+            <p class="meta-note">Demonstrated on the latest Android versions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="family">
+      <div class="section-head">
+        <p class="eyebrow">GhostTap</p>
+        <h2>Four complementary attack surfaces</h2>
+  <p class="section-text">Android's complex GUI architecture causes state inconsistencies across components during asynchronous IPC. We identify and exploit four distinct attack scenarios.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <div class="card-badge">01</div>
+          <h3>GhostIPC</h3>
+          <p>Exploits asymmetric IPC buffer limits (Sync vs. Oneway) to trigger selective failures, desynchronizing state between system_server and SystemUI.</p>
+          <ul>
+            <li>Bypasses Background Activity Launch (BAL)</li>
+            <li>Affects Android 14</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-badge">02</div>
+          <h3>GhostWindow</h3>
+          <p>Exploits ONEWAY buffer overflow during VSYNC updates to desynchronize SurfaceFlingers (rendering) from InputDispatcher (routing).</p>
+          <ul>
+            <li>Bypasses Obscured Touch Detection, Trusted Overlay, ARIS, Anti-Overlay Flags</li>
+            <li>Affects Android 12–16</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-badge">03</div>
+          <h3>GhostARIS</h3>
+          <p>Exploits the animation state exemption in ARIS, causing InputDispatcher to skip input filtering while an Activity is animating.</p>
+          <ul>
+            <li>Bypasses ARIS and Anti-Overlay Flags</li>
+            <li>Affects Android 12–16</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-badge">04</div>
+          <h3>GhostTrust</h3>
+          <p>Exploits privilege state inconsistencies during PiP transition failures to retain TRUSTED_OVERLAY status on attacker-controlled windows.</p>
+          <ul>
+            <li>Bypasses Obscured Touch Detection, Trusted Overlay, ARIS, Anti-Overlay Flags</li>
+            <li>Affects Android 12–16</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section videos" id="videos">
+      <div class="section-head">
+        <p class="eyebrow">Demonstrations</p>
+  <h2>Attack Demonstration Videos</h2>
+      </div>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-label">GhostIPC Demo</div>
+          <div class="video-frame" aria-label="GhostIPC Demo">
+            <video controls width="100%">
+              <source src="video/GhostIPC.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-label">GhostWindow Demo</div>
+          <div class="video-frame" aria-label="GhostWindow Demo">
+            <video controls width="100%">
+              <source src="video/GhostWindow.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-label">GhostTrust & GhostARIS Demo</div>
+          <div class="video-frame" aria-label="GhostTrust & GhostARIS Demo">
+            <video controls width="100%">
+              <source src="video/GhostTrustnGhostARIS.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="paper">
+      <div class="section-head">
+        <p class="eyebrow">Paper</p>
+        <h2>Full write-up and artifacts</h2>
+  <p class="section-text">The full paper and artifacts will be published once the paper has been accepted.</p>
+      </div>
+      <div class="paper-grid">
+        <div class="paper-card">
+          <div class="paper-title">Paper PDF</div>
+          <p>The paper will be made available after acceptance.</p>
+        </div>
+        <div class="paper-card">
+          <div class="paper-title">GitHub Artifacts</div>
+          <p>All artifacts will be released after acceptance.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section highlight" id="impact">
+      <div class="highlight-grid">
+        <div>
+          <p class="eyebrow">Why it matters</p>
+          <h2>UI Integrity Requires Holistic Defenses</h2>
+          <p class="section-text">GhostTap demonstrates that UI, IPC, and trust cues must be protected together. Point solutions (e.g., overlay warnings) are insufficient when windows, gestures, and intents can be combined.</p>
+        </div>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-title">Cross-Layer Exploits</div>
+            <p>UI overlays, window races, and IPC relays can be chained for real-world hijacks.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-title">User Deception</div>
+            <p>Attacks succeed without root, special permissions, or visible artifacts.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-title">Actionable Fixes</div>
+            <p>We recommend stricter window focus rules, improved intent verification, and stronger UI integrity signals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div>GhostTap - Android tapjacking & related GhostTap attack scenarios</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
